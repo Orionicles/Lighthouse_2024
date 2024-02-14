@@ -37,7 +37,7 @@ public class CardDatabase : MonoBehaviour
 
                 newCard.AddOption(sanity, nourishment, bait, book, fish);
             }
-            //Debug.Log(newCard.ToString());
+            Debug.Log(newCard.ToString());
             cardDatabase.Add(newCard.cardName, newCard);
         } 
     }
