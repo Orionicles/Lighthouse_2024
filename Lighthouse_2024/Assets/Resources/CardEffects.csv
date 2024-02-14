@@ -1,0 +1,9 @@
+CardName,# of Options,Option 1 Sanity,Option 1 Nourishment,Option 1 Bait,Option 1 Book,Option 1 Fish,Option 2 Sanity,Option 2 Nourishment,Option 2 Bait,Option 2 Book,Option 2 Fish
+Hunger,2,0,1,0,0,-1,0,-2,0,0,0
+Rainy Day,2,1,0,0,-1,0,-2,0,0,0,0
+Uneventful Day,1,0,0,0,0,0,0,0,0,0,0
+Calm Sea,2,0,0,-1,0,1,1,0,0,0,0
+Forgot About That,2,0,0,1,0,0,0,0,0,1,0
+The Storage,1,0,0,1,1,0,0,0,0,0,0
+Canned Tuna,2,0,0,0,0,1,0,2,0,0,0
+Something Awful,1,-2,0,0,0,0,0,0,0,0,0
