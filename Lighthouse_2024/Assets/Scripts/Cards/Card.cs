@@ -10,8 +10,8 @@ using UnityEngine;
 [System.Serializable]
 public class Card
 {
-    public List<Option> Options;
     public string cardName;
+    public List<Option> Options;
 
     /// <summary>
     /// A class representing the changes to values if an option is chosen

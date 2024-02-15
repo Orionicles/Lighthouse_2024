@@ -4,19 +4,41 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEditor;
 using Unity.VisualScripting.Dependencies.NCalc;
+using UnityEditor.UI;
+using Unity.VisualScripting;
+using System.Xml.Schema;
 
 /// <summary>
 /// Inspiration from https://www.youtube.com/watch?v=C37C2yCUlCM&ab_channel=JesseEtzler
 /// </summary>
 public class CardDatabase : MonoBehaviour
 {
-    // A dictionary that compares a card's name to a card's effects
-    public static Dictionary<string, Card> cardDatabase = new();
+    //Dictionary with the Card's Name as the key.
+    public  Dictionary<string, Card> cardDatabase = new();
+    //Creates class as a Singleton
+    public static CardDatabase self;
+
+    void OnDrawGizmos() { 
+        CheckSingleton();
+    }
+    void Awake() {
+        CheckSingleton();
+    }
+
+    private void CheckSingleton() {
+        if(self != null && self != this) {
+            Destroy(this);
+        }
+        else
+        {
+            self = this;
+        }
+    }
     
     /// <summary>
     /// Refills the Database based off of the data within the \Resources\CardEffects. Shouldn't be called in-code.
     /// </summary>
-    public static void LoadCardData() 
+    public void LoadCardData() 
     {
         //Empties the Database
         cardDatabase.Clear();
@@ -37,25 +59,10 @@ public class CardDatabase : MonoBehaviour
 
                 newCard.AddOption(sanity, nourishment, bait, book, fish);
             }
-            Debug.Log(newCard.ToString());
+            //Debug.Log(newCard.ToString());
             cardDatabase.Add(newCard.cardName, newCard);
         } 
     }
 
     
-}
-
-/// <summary>
-/// Allows for a Unity Editor button to refill the Database
-/// </summary>
-[CustomEditor(typeof(CardDatabase))]
-public class CardDatabaseEditor : Editor 
-{
-    public override void OnInspectorGUI()
-    {
-        DrawDefaultInspector();
-        if(GUILayout.Button("Reimport Card Database")) {
-            CardDatabase.LoadCardData();
-        }
-    }
 }
