@@ -89,7 +89,7 @@ public class ResourceHandler
     }
 
     /// <summary>
-    /// Decreases the amount of one consumable, and increases the amount of another. Throws an error if The removed Resource isn't contained in the consumables.
+    /// Decreases the amount of one consumable, and increases the amount of another. Throws an error if the removed Resource isn't contained in the consumables.
     /// </summary>
     /// <param name="increased"></param>
     /// <param name="decreased"></param>
