@@ -1,9 +1,4 @@
-﻿using UnityEngine;
-
-/*
-	Represents an item
-	I forgot its entire scope before i wrote this comment months later, woops
-*/
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
 public class Item : ScriptableObject
