@@ -6,14 +6,14 @@ using UnityEngine.EventSystems;
 public class MinigameActor : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
 	// Need a reference to the canvas so that the canvas scale is accounted for when moving dragged objects
-	[SerializeField] private Canvas canvas;
+	[SerializeField] protected Canvas canvas;
 
-	private RectTransform rectTransform;
+	protected RectTransform rectTransform;
 
 	// need a canvas group component in order to stop blocking raycasts while dragging the object
 	// this is necessary in order for other actors to be able to detect having something dropped onto them,
 	// since by default the OnDrop() event will be "captured" by the object being dropped, and not be detected by the object that's having something dropped onto it
-	private CanvasGroup canvasGroup;
+	protected CanvasGroup canvasGroup;
 
 	private void Awake()
 	{
@@ -27,7 +27,7 @@ public class MinigameActor : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
 		canvasGroup.blocksRaycasts = false;
 	}
 
-	public void OnDrag(PointerEventData eventData)
+	public virtual void OnDrag(PointerEventData eventData)
 	{
 		rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
 	}
