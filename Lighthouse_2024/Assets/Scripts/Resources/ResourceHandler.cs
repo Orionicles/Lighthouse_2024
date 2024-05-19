@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ResourceHandler
+public static class ResourceHandler
 {
     public enum ResourceType {
         Sanity,
@@ -14,16 +14,16 @@ public class ResourceHandler
         Fish
     }
 
-    public List<ResourceType> consumables { get; private set;}
-    public int SanityMeter {get; private set;}
-    public int NourishmentMeter {get; private set;}
+    public static List<ResourceType> consumables { get; private set;}
+    public static int SanityMeter {get; private set;}
+    public static int NourishmentMeter {get; private set;}
 
-    private int MeterMax = 5;
-    private int MeterStart = 3;
-    private int ConsumableMax = 5;
+    private static int MeterMax = 5;
+    private static int MeterStart = 3;
+    private static int ConsumableMax = 5;
 
 
-    void Start() {
+    static void Start() {
         SanityMeter = MeterStart;
         NourishmentMeter = MeterStart;
         consumables = new(ConsumableMax);
@@ -34,7 +34,7 @@ public class ResourceHandler
     /// </summary>
     /// <param name="type"></param>
     /// <param name="quantity">The number of resources to add (or subtract if negative)</param>
-    public void AddResource(ResourceType type, int quantity) {
+    public static void AddResource(ResourceType type, int quantity) {
         switch (type) 
         {
             case ResourceType.Sanity:
@@ -93,7 +93,7 @@ public class ResourceHandler
     /// </summary>
     /// <param name="increased"></param>
     /// <param name="decreased"></param>
-    public void ChangeResource(ResourceType increased, ResourceType decreased) {
+    public static void ChangeResource(ResourceType increased, ResourceType decreased) {
         if (!consumables.Remove(decreased)) 
         {
             Debug.LogError("Not enough of Resource type to change");

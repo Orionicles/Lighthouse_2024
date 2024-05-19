@@ -55,12 +55,25 @@ public class Card
         Options.Add(newOption);
     }
 
+    // This should be wildly changed, as it's not very good right now
     public override string ToString()
     {
-        string output = cardName + "\n";
+        string output = cardName + "\n\n";
+        int optionEnumerator = 0;
         foreach (var option in Options)
         {
-            output += "Option: " + option.sanity + " Sanity, " + option.nourishment + " Nourishment, " + option.bait + " Bait, " + option.book + " Book, " + option.fish + " Fish\n";
+            output += "Option " + ++optionEnumerator + "\n";
+            if (option.sanity != 0)
+                output += "Sanity: " + option.sanity + "\n";
+            if (option.nourishment != 0)
+                output += "Nourishment: " + option.nourishment + "\n";
+            if (option.bait != 0)
+                output += "Bait: " + option.bait + "\n";
+            if (option.book != 0)
+                output += "Book: " + option.book + "\n";
+            if (option.fish != 0)
+                output += "Bait: " + option.bait + "\n";
+            output += "\n\n";
         }
         return output;
     }
